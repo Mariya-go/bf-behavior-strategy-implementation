@@ -3,14 +3,10 @@
 /* this exercise has 2 distractors */
 
 function updateLight(current) {
-  if (current === 'green') {
-    return 'yellow';
-  } else if (current === 'yellow') {
-    return 'red';
-  }
-  return 'green';
+    if (current === 'green') {
+        return 'yellow';
+    } else if (current === 'yellow') {
+        return 'red';
+    }
+    return 'green';
 }
-
-
-let updateLight(current) { // distractor
-let updateLight(current) = function { // distractor

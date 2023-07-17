@@ -11,7 +11,27 @@
 
 // -------- your solutions --------
 
-for (const solution of [secretSolution]) {
+const arrToMax = (max = 0) => {
+    if (typeof max !== 'number') {
+        throw new TypeError('max is not a number');
+    }
+    if (!Number.isInteger(max)) {
+        throw new TypeError('max is not an integer');
+    } else if (max < 0) {
+        throw new TypeError('max is less than 0');
+    }
+
+    const newArr = [];
+
+    for (let i = 0; i <= max; i++) {
+        newArr.push(i);
+    }
+    return newArr;
+};
+
+const mySolutions = [arrToMax];
+
+for (const solution of mySolutions) {
     // the main test suite for the function
     describe(solution.name + ': counts up from 0', () => {
         it('default parameter is 0 -> [0]', () => {
@@ -25,6 +45,23 @@ for (const solution of [secretSolution]) {
             expect(solution(1)).toEqual([0, 1]);
         });
         // write at least 5 more tests ...
+    });
+    describe(solution.name + ': counts up from 0', () => {
+        it('throws an error if the max is not a number', () => {
+            const notPassingANumber = () => solution('2');
+            expect(notPassingANumber).toThrowError(TypeError);
+            expect(notPassingANumber).toThrowError('max is not a number');
+        });
+        it('throws an error if the max is not an integer', () => {
+            const notPassingANumber = () => solution(1.2);
+            expect(notPassingANumber).toThrowError(TypeError);
+            expect(notPassingANumber).toThrowError('max is not an integer');
+        });
+        it('throws an error if the max is less than 0', () => {
+            const notPassingANumber = () => solution(-1);
+            expect(notPassingANumber).toThrowError(TypeError);
+            expect(notPassingANumber).toThrowError('max is less than 0');
+        });
     });
 }
 

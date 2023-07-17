@@ -21,8 +21,4 @@
 const repeatString = (text = '', repetitions = 1) =>
   repetitions === 0
     ? ''
-    : text + repeatString(text, nextRepetitions - 1);
-
-
-const repeatString = (text = '', repetitions = 1) => { // distractor
-repetitions = 0 // distractor
+    : text + repeatString(text, repetitions - 1);

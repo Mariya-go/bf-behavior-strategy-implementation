@@ -19,7 +19,10 @@ const mapFilterReduce = (arr) => {
     const castToNumber = (entry) => Number(entry);
 
     // fill in the array methods and pass in the correct logic
-    const sumOfNumberies = arr._(_)._(_)._(_, _);
+    const sumOfNumberies = arr
+        .map(castToNumber)
+        .filter(isNotNaN)
+        .reduce(sumNumbers, 0);
 
     return sumOfNumberies;
 };
@@ -30,9 +33,37 @@ for (const solution of [
     secretSolution,
     // mapFilterReduce,
 ]) {
-    describe(solution.name + ': _', () => {
-        describe('_', () => {
-            it('_', () => {});
+    describe(solution.name + ': sum of numbery strings', () => {
+        describe('correctly summed numbery strings', () => {
+            it('array contains a numbery strings', () => {
+                const actual = solution(['2', '3', '4', 'a']);
+                expect(actual).toEqual(9);
+            });
+            it('array does not contains a numbery strings', () => {
+                const actual = solution(['f', '.', '/', 'a']);
+                expect(actual).toEqual(0);
+            });
+            it('array contains all numbery strings', () => {
+                const actual = solution(['2', '3', '4', '8']);
+                expect(actual).toEqual(17);
+            });
+            it('empty array', () => {
+                const actual = solution([]);
+                expect(actual).toEqual(0);
+            });
+        });
+        describe('does not modify the argument', () => {
+            it('returns a new array', () => {
+                const arg = [];
+                const actual = solution(arg);
+                const areNotTheSameArray = arg !== actual;
+                expect(areNotTheSameArray).toEqual(true);
+            });
+            it('does not modify the argument', () => {
+                const arg = ['1', '2', '3'];
+                solution(arg);
+                expect(arg).toEqual(['1', '2', '3']);
+            });
         });
     });
 }

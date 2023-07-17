@@ -10,7 +10,20 @@
 
 // -------- your solutions --------
 
-for (const solution of [secretSolution]) {
+const reversedString1 = (toReverse = '') => {
+    return toReverse.split('').reverse().join('');
+};
+
+const reversedString2 = (toReverse = '') => {
+    let reversed = '';
+    for (const letter of toReverse) {
+        reversed = letter + reversed;
+    }
+    return reversed;
+};
+
+const mySolutions = [reversedString1, reversedString2];
+for (const solution of mySolutions) {
     // the main test suite for the function
     describe(solution.name + ': reverses a string', () => {
         it('default parameter is an empty string -> ""', () => {
@@ -23,6 +36,18 @@ for (const solution of [secretSolution]) {
             expect(solution('ASDF')).toEqual('FDSA');
         });
         // write at least 5 more tests ...
+        it('a string with special symbols', () => {
+            expect(solution('.,</>')).toEqual('>/<,.');
+        });
+        it('a string with one symbol', () => {
+            expect(solution('a')).toEqual('a');
+        });
+        it('a string with same symbols', () => {
+            expect(solution('aaa')).toEqual('aaa');
+        });
+        it('a string with same symbols', () => {
+            expect(solution('racecar')).toEqual('racecar');
+        });
     });
 }
 

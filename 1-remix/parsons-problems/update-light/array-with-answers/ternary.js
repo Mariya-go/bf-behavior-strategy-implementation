@@ -7,6 +7,3 @@ function updateLight(current) {
 
     return current === 'red' ? 'green' : lights[lights.indexOf(current) + 1];
 }
-
-current === 'red' ? 'green' : lights[lights.indexOf(current) + 1]; // distractor
-const lights = [green, yellow, red]; // distractor

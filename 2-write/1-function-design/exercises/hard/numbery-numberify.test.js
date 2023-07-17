@@ -14,10 +14,46 @@
 
 // -------- your solutions --------
 
-for (const solution of [secretSolution]) {
-    describe(solution.name + ': _', () => {
-        describe('_', () => {
-            it('_', () => {});
+const numberify = (arrayOfStrings = []) => {
+    const numberifyArr = [];
+    arrayOfStrings.forEach((item) => {
+        const numberItem = Number(item);
+        if (!Number.isNaN(numberItem)) {
+            numberifyArr.push(Number(item));
+        } else {
+            return;
+        }
+    });
+    return numberifyArr;
+};
+
+console.log(numberify(['1', 's', '3', ',', '/', '5']));
+
+const mySolutions = [numberify];
+
+for (const solution of mySolutions) {
+    describe(solution.name + ': numbery-numberify', () => {
+        describe('array of numbers and strings', () => {
+            it('array of numbers and symbols in strings', () => {
+                const actual = ['1', 's', '3', ',', '/', '5'];
+                const expected = [1, 3, 5];
+                expect(solution(actual)).toEqual(expected);
+            });
+            it('array of numbers in strings', () => {
+                const actual = ['1', '2', '3', '4', '5', '6'];
+                const expected = [1, 2, 3, 4, 5, 6];
+                expect(solution(actual)).toEqual(expected);
+            });
+            it('array of symbols in strings', () => {
+                const actual = ['d', 's', 'b', ',', '/', '.'];
+                const expected = [];
+                expect(solution(actual)).toEqual(expected);
+            });
+            it('empty array', () => {
+                const actual = [];
+                const expected = [];
+                expect(solution(actual)).toEqual(expected);
+            });
         });
     });
 }

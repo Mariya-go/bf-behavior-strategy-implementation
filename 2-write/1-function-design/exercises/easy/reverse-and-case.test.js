@@ -13,7 +13,15 @@
 
 // -------- your solutions --------
 
-for (const solution of [secretSolution]) {
+const reversedCasify = (text = '', lowerCase = true) => {
+    return lowerCase
+        ? text.split('').reverse().join('').toLowerCase()
+        : text.split('').reverse().join('').toUpperCase();
+};
+
+const mySolutions = [reversedCasify];
+
+for (const solution of mySolutions) {
     describe(
         solution.name + ': reverses a string then sets to lower or upper case',
         () => {
@@ -28,22 +36,55 @@ for (const solution of [secretSolution]) {
             // write the tests indicated by the comments
             describe('when set to lower case', () => {
                 // when the text is an empty string
-                it(_, () => {
-                    expect(solution(_, _)).toEqual(_);
+                it('empty text', () => {
+                    expect(solution('', true)).toEqual('');
                 });
                 // when the text is all upper case
+                it('uppercased text', () => {
+                    expect(solution('ASDF', true)).toEqual('fdsa');
+                });
                 // when the text is all lower case
+                it('lowercased text', () => {
+                    expect(solution('asdf', true)).toEqual('fdsa');
+                });
                 // when the text is mixed upper and lower case
+                it('mixed text', () => {
+                    expect(solution('AsDf', true)).toEqual('fdsa');
+                });
                 // when the text contains punctuation
+                it('text with punctuation', () => {
+                    expect(solution('.ASDF,', true)).toEqual(',fdsa.');
+                });
                 // when the text contains numbers
+                it('text with numbers', () => {
+                    expect(solution('qw23er', true)).toEqual('re32wq');
+                });
             });
             describe('when set to upper case', () => {
                 // when the text is an empty string
+                it('empty text', () => {
+                    expect(solution('', false)).toEqual('');
+                });
                 // when the text is all upper case
+                it('uppercased text', () => {
+                    expect(solution('ASDF', false)).toEqual('FDSA');
+                });
                 // when the text is all lower case
+                it('lowercased text', () => {
+                    expect(solution('asdf', false)).toEqual('FDSA');
+                });
                 // when the text is mixed upper and lower case
+                it('mixed text', () => {
+                    expect(solution('AsDf', false)).toEqual('FDSA');
+                });
                 // when the text contains punctuation
+                it('text with punctuation', () => {
+                    expect(solution('.ASDF,', false)).toEqual(',FDSA.');
+                });
                 // when the text contains numbers
+                it('text with numbers', () => {
+                    expect(solution('qw23er', false)).toEqual('RE32WQ');
+                });
             });
         },
     );

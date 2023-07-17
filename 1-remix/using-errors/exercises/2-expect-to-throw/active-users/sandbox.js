@@ -11,6 +11,6 @@ const people = [
 const found = findActiveUsers(people);
 console.log('found:', found);
 
-// debugger;
+debugger;
 const listed = listActiveUsers(people);
 console.log('listed:', listed);

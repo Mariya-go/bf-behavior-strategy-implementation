@@ -16,13 +16,9 @@
 */
 
 const repeatString = (text = '', repetitions = 1) => {
-  let repeatedText = '';
-  for (let count = 0; count < repetitions; count++) {
-    repeatedText += text;
-  }
-  return repeatedText;
+    let repeatedText = '';
+    for (let count = 0; count < repetitions; count++) {
+        repeatedText += text;
+    }
+    return repeatedText;
 };
-
-for (let count = 0; count <= repetitions; count++) { // distractor
-for (let count = 0; count !>= repetitions; count++) { // distractor
-for (const count = 0; count < repetitions; count++) { // distractor

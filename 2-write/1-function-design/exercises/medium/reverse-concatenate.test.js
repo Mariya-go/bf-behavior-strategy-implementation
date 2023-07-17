@@ -11,10 +11,35 @@
 
 // -------- your solutions --------
 
-for (const solution of [secretSolution]) {
-    describe(solution.name + ': _', () => {
-        describe('_', () => {
-            it('_', () => {});
+const reverseConcat = (arrayOfStrings = []) => {
+    let reversedString = '';
+    for (let i = 0; i < arrayOfStrings.length; i++) {
+        reversedString += arrayOfStrings[i].split('').reverse().join('');
+    }
+    return reversedString;
+};
+
+const mySolutions = [reverseConcat];
+
+for (const solution of mySolutions) {
+    describe(solution.name + ': reverse-concatenate', () => {
+        describe('not empty array of strings', () => {
+            it('array of strings', () => {
+                const actual = ['test', 'racecar'];
+                const expected = 'tsetracecar';
+            });
+            it('array of numbers', () => {
+                const actual = ['12', '23', '34'];
+                const expected = '213243';
+            });
+            it('mixed array', () => {
+                const actual = ['12', 'test', '34'];
+                const expected = '21tset43';
+            });
+            it('empty array', () => {
+                const actual = [];
+                const expected = '';
+            });
         });
     });
 }

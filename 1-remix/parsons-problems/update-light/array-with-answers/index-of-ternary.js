@@ -7,5 +7,3 @@ function updateLight(current) {
     const newLightIndex = lights.indexOf(current) + 1;
     return newLightIndex < 3 ? lights[newLightIndex] : lights[0];
 }
-
-return newLightIndex < 3 ? lights[0] : lights[newLightIndex]; // distractor

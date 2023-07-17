@@ -26,6 +26,3 @@ const repeatString = (text = '', repetitions = 1, repeated = '') => {
         return repeatString(text, nextRepetitions, nextRepeated);
     }
 };
-
-return ''; // distractor
-return repeatString(text, nextRepetitions); // distractor

@@ -15,7 +15,30 @@
 
 // -------- your solutions --------
 
-for (const solution of [secretSolution]) {
+const fizzbuzz = (num = 0) => {
+    if (typeof num !== 'number') {
+        throw new TypeError('num is not a number');
+    }
+    if (!Number.isInteger(num) || num < 0) {
+        throw new TypeError('num is not an integer or < 0');
+    }
+
+    if (num % 3 === 0 && num % 5 === 0) {
+        return 'fizzbuzz';
+    } else if (num % 3 === 0) {
+        return 'fizz';
+    } else if (num % 5 === 0) {
+        return 'buzz';
+    } else {
+        return num;
+    }
+};
+
+console.log(fizzbuzz(3));
+
+const mySolutions = [fizzbuzz];
+
+for (const solution of mySolutions) {
     describe(solution.name + ': fizbuzzish', () => {
         describe('default parameter is 0', () => {
             it('returns "fizzbuzz" when no argument is passed', () =>
@@ -30,6 +53,9 @@ for (const solution of [secretSolution]) {
                 expect(solution(2)).toEqual(2);
             });
             // write more tests in this category
+            it('0 -> 8', () => {
+                expect(solution(8)).toEqual(8);
+            });
         });
 
         describe('only divisible by only 3', () => {
@@ -41,6 +67,9 @@ for (const solution of [secretSolution]) {
                 expect(solution(6)).toEqual(expectedValue);
             });
             // write more tests in this category
+            it('123 -> "fizz"', () => {
+                expect(solution(123)).toEqual(expectedValue);
+            });
         });
 
         describe('only divisible by only 5', () => {
@@ -52,6 +81,9 @@ for (const solution of [secretSolution]) {
                 expect(solution(10)).toEqual(expectedValue);
             });
             // write more tests in this category
+            it('200 -> "buzz"', () => {
+                expect(solution(200)).toEqual(expectedValue);
+            });
         });
 
         describe('divisible by 5 and 3', () => {
@@ -63,6 +95,26 @@ for (const solution of [secretSolution]) {
                 expect(solution(30)).toEqual(expectedValue);
             });
             // write more tests in this category
+            it('300 -> "fizzbuzz"', () => {
+                expect(solution(300)).toEqual(expectedValue);
+            });
+        });
+        describe('when the number is invalid, it throws an error', () => {
+            it('does not accept not-numbers', () => {
+                expect(() => {
+                    solution('3');
+                }).toThrow(TypeError);
+            });
+            it('does not accept not integer and negative number', () => {
+                expect(() => {
+                    solution(-2);
+                }).toThrow(TypeError);
+            });
+            it('does not accept not integer and negative number', () => {
+                expect(() => {
+                    solution(1.5);
+                }).toThrow(TypeError);
+            });
         });
     });
 }

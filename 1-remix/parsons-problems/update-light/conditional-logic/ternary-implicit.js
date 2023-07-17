@@ -2,5 +2,3 @@
 
 const updateLight = (current) =>
     current == 'green' ? 'yellow' : current == 'yellow' ? 'red' : 'green';
-
-current == 'yellow' ? 'green' : current == 'red' ? 'yellow' : 'red'; // distractor

@@ -16,40 +16,49 @@
 // -------- your solutions --------
 
 const whileLoop = (max) => {
-    let countUp = _;
+    let countUp = 0;
     const result = [];
-    while (_) {
+    while (countUp < max) {
         const nextEntry =
-            countUp % 15 === 0 ? '_' : _ ? 'buzz' : _ ? 'fizz' : _;
+            countUp % 15 === 0
+                ? 'fizzbuzz'
+                : countUp % 5
+                ? 'buzz'
+                : countUp % 3
+                ? 'fizz'
+                : countUp;
         result.push(nextEntry);
     }
     return result;
 };
 
 /* describe this solution's strategy
+    In this solution we use truthy and falsy concept, ternary operation and for loop.
  */
 const oneLineforLoop = (max) => {
     const result = [];
-    for (let i = 0; i < _; )
-        result._((++i % _ ? '' : '_') + (i % _ ? '' : '_') || i);
+    for (let i = -1; i < max; )
+        result.push((++i % 3 ? '' : 'fizz') + (i % 5 ? '' : 'buzz') || i);
+
     return result;
 
     // https://codeburst.io/javascript-breaking-down-the-shortest-possible-fizzbuzz-answer-94a0ad9d128a
 };
 
 /* describe this solution's strategy
+In this strategy we divide process into small functions and variables.
  */
 const manySmallFunctions = (max) => {
-    const threeDivides = (n) => n % _ === 0;
-    const fiveDivides = (n) => n % _ === 0;
-    const fifteenDivides = (n) => n % _ === 0;
+    const threeDivides = (n) => n % 3 === 0;
+    const fiveDivides = (n) => n % 5 === 0;
+    const fifteenDivides = (n) => n % 15 === 0;
 
     const fizzbuzzOrNumber = (num) => {
-        if (_) {
+        if (fifteenDivides) {
             return 'fizzbuzz';
-        } else if (_) {
+        } else if (threeDivides) {
             return 'fizz';
-        } else if (_) {
+        } else if (fiveDivides) {
             return 'buzz';
         } else {
             return num;
@@ -58,18 +67,31 @@ const manySmallFunctions = (max) => {
 
     // https://stackoverflow.com/a/33352604
     const arrayOfIndexes = [...Array(max).keys()];
-    const fizzBuzzedArray = arrayOfIndexes.map(_);
+    const fizzBuzzedArray = arrayOfIndexes.map(fizzbuzzOrNumber);
     return fizzBuzzedArray;
 };
 
 // -------- your solutions --------
 
-for (const solution of [
-    secretSolution,
-    // whileLoop,
-    // oneLineforLoop,
-    // manySmallFunctions,
-]) {
+const fizbuzzArr = (max) => {
+    finalArr = [];
+    for (let i = 0; i < max; i++) {
+        if (i % 15 === 0) {
+            finalArr.push('fizzbuzz');
+        } else if (i % 3) {
+            finalArr.push('fizz');
+        } else if (i % 5) {
+            finalArr.push('buzz');
+        } else {
+            finalArr.push(i);
+        }
+    }
+    return finalArr;
+};
+
+const mySolutions = [fizbuzzArr];
+
+for (const solution of mySolutions) {
     describe(solution.name + ': fizzbuzz', () => {
         describe('numbers divisible by 3', () => {
             it('3 should return an array with the first 3 values', () => {

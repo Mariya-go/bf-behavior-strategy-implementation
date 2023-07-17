@@ -3,12 +3,9 @@
 /* this exercise has 2 distractors */
 
 function updateLight(current) {
-  return current === 'yellow'
-    ? 'red'
-    : current === 'green'
-    ? 'yellow'
-    : 'green';
+    return current === 'yellow'
+        ? 'red'
+        : current === 'green'
+        ? 'yellow'
+        : 'green';
 }
-
-current === 'yellow'; // distractor
-function updateLight = (current) => { // distractor

@@ -3,9 +3,6 @@
 /* this exercise has 2 distractors */
 
 function updateLight(current) {
-  const lights = ['green', 'yellow', 'red'];
-  return lights[(lights.indexOf(current) + 1) % lights.length];
+    const lights = ['green', 'yellow', 'red'];
+    return lights[(lights.indexOf(current) + 1) % lights.length];
 }
-
-const lights = 'green', 'yellow', 'red'; // distractor
-lights[(lights.indexOf(current) + 1) % lights.length]; // distractor
